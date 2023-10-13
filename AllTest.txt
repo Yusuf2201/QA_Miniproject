@@ -1,0 +1,111 @@
+1. API Testing (menggunakan chai, mocha dan supertest) web https://dummy.restapiexample.com/
+        - Menerima daftar karyawan dan divalidasi ke skema JSON (GET)
+        - Menerima daftar karyawan dengan ID 1 dan validasi ke skema JSON (GET)
+        - menerima NULL karena daftar karyawan tidak tersedia (GET)
+        - membuat daftar satu karyawan baru dan menvalidasi responnya (POST)
+        - mengupdate satu daftar karyawan dan menvalidasi responnya (PUSH and sendkey)
+        - menghapus satu daftar karyawan dan menvalidasi responnya (DELETE)
+    catatan : api tidak dapat diakses dalam waktu bersamaan dan kurang lebih membutuhkan waktu 1 menit
+2. Web testing (menggunakan chai, mocha, selenium) web https://www.demoblaze.com/index.html#
+    a. regist testing
+        "Test Negatif Registrasi"
+            -Res_001_mecoba login dengan username dan password yang pernah digunakan
+            -Res_002_mencoba login dengan username yang sudah digunakan dan password salah
+            -Res_003_mencoba login dengan username kosong dan password diisi
+            -Res_004_coba login dengan username diisi dan password kosong
+        "Test Positif Registrasi"
+            Res_005_mencoba login dengan  username dan password yang belum terdaftar
+    b login testing
+        "Test Positif Login"
+            -Log_001_mencoba login dengan  username dan password yang benar
+        "Test Negatif Login"
+            -Log_002_mencoba login dengan  username benar dan password salah
+            -Log_003_mencoba login dengan  username salah dan password benar
+            -Log_004_mencoba login dengan  username kosong dan password benar
+            -Log_005_mencoba login dengan  username benar dan password kosong
+            -Log_006_mencoba login dengan  username kosong dan password kosong
+    c. homepage testing (mengunakan chai, mocha, webdriverio, appium)
+        "Mengecek Tombol yang ada di HomePage"
+            -Home_001_mengecek tombol selanjutnya (>)
+            -Home_002_mengecek tombol sebelumnya (<)
+            -Home_003_mengecek tombol sebelumnya (previous)
+            -Home_004_mengecek tombol selanjutnya (next)
+            -Home_005_sortir berdasarkan kategori monitor
+            -Home_006_sortir berdasarkan kategori Laptop
+            -Home_007_sortir berdasarkan kategori Phone
+        "Mengecek About Demoblaze di HomePage"
+            -Home_008_ Masuk ke About demoblaze
+            -Home_009_Memutar video About Demoblaze
+            -Home_010_Pause Video About Demoblaze
+            -Home_011_Keluar About Demoblaze
+        "Mengecek Contact Demoblaze di homePage"
+            =Home_013_ mengisi form contact demoblaze
+        "Mengecek About Demoblaze di HomePage"
+            -Home_015_ memasukkan Product ke Keranjang'
+    d. cart testing
+        "Test Positif CartPage"
+            -Cart_001_emasukkan barang ke dalam keranjang
+            -Cart_002_menghapus barang dari keranjang
+            -Cart_003_menekan tombol pembelian untuk menuju form pembelian
+        "Test Negatif Form pembelian"
+            -Cart_004_mengisi form dengan nama kosong'
+            -Cart_005_mengisi form dengan id card kosong'
+        "Test positif Form pembelian"
+            -Cart_006_mengisi form dengan nama kosong
+    e. e2e checkout item
+            -E2E_001_Membuka page
+            -E2E_002_Masuk ke menu login
+            -E2E_003_Mengisi form login
+            -E2E_004_Memasukkan barang ke keranjang
+            -E2E_005_ Pindah ke halaman keranjang
+            -E2E_006_Melakukan pembelian dengan menekan tombol purchase
+            -E2E_007_mengisi form purchase dan melakukan pembelian
+            -E2E_008_selesai melakukan pembelian
+            -E2E_009_logout akun
+
+3. Mobile Testing (appium, webdriver io, chai, mocha) apk = generalstore
+    a. login test
+        'Negatif Test Login', function 
+            -Log_001_langsung menekan menuju belanja
+        'Positif Test Login', function 
+            -Log_002_Mengisi Negara Andorra
+            -Log_003_Mengecek tombol male
+            -Log_004_Mengecek tombol female'
+            -Log_005_Menekan tombol lets Shop
+    b. inventory test
+            -Inv_001_tanpa memasukkan item ke keranjang
+            -Inv_002_Memasukkan 1 item ke keranjang
+            -Inv_003_Memasukkan 2 item ke keranjang
+            -Inv_004_Menghapus 1 item
+    c. cart testing
+        'Positif Test CartPage'
+            -Cart_001_Memasukkan item ke keranjang
+            -Cart_002_melakukan checked
+            -Cart_003_tanpa melakukan checked
+    d. e2e add item 
+        'melakukan pemesanan item'
+	        -E2E_001_Login menuju belanja'
+            -E2E_002_Memasukkan barang dan mengecek di keranjang'
+            -E2E_003_Mengecek barang yang ada di keranjang
+
+4. Performance testing
+    "browser test" (front end)
+        -await Home_browser
+		-Product_browser
+		-Blog_browser
+		-Story_browser
+		-Location_browser
+		-FAQ_browser
+		-Contact_browser
+    "protocol test" (backend)
+        -Home_protocol
+		-Product_protocol
+		-Blog_protocol
+		-Story_protocol
+		-Location_protocol
+		-FAQ_protocol
+		-Contact_protocol
+
+
+https://web.dev/articles/cls
+           

@@ -7,11 +7,12 @@ class CartPage extends Page {
 	}
 	DeleteE2 = By.xpath("//a[text()='Delete']")
 	placeorderE2 = By.css('#page-wrapper > div > div.col-lg-1 > button')	
+	namePlaceOrderE2 = By.css('#orderModalLabel')
 	toCartE2 = By.css('#navbarExample > ul > li:nth-child(4) > a')
 	checkE2= By.css('#tbodyid > tr > td:nth-child(2)')
 	amountE2 = By.css('#totalp')
 	FormPlaceOrderE2 = By.css('#orderModalLabel')
-	succesPurchaseE2 = By.css('body > div.sweet-alert.showSweetAlert.visible > h2')
+	succesPurchaseE2 = By.xpath('//h2[text()="Thank you for your purchase!"]')
 	FinishOrderE2 = By.css('body > div.sweet-alert.showSweetAlert.visible > div.sa-button-container > div > button')
 
 	nameE2 = By.css('#name')
@@ -54,6 +55,8 @@ class CartPage extends Page {
 	}
 
 	async Delete () {
+		// const a = await this.driver.wait(until.elementLocated(this.DeleteE2), 10000)
+		// return await a.delete()
 		return await this.driver.findElement(this.DeleteE2).click()
 	}
 	async Check () {
@@ -65,6 +68,10 @@ class CartPage extends Page {
 	async Amount () {
 		return await this.driver.findElement(this.amountE2).getText()
 	}
+	async namePlaceOrder () {
+		const a = await this.driver.wait(until.elementLocated(this.namePlaceOrderE2), 5000)
+		return await a.getText()
+	}
 	async SuccestoPlaceOrder() {
 		return await this.driver.findElement(this.FormPlaceOrderE2).getText()
 	}
@@ -72,6 +79,8 @@ class CartPage extends Page {
 		return await this.driver.findElement(this.toCartE2).click()
 	}
 	async placeOrder () {
+		// const a = await this.driver.wait(until.elementLocated(this.namePlaceOrderE2), 5000)
+		// return await a.click()
 		return await this.driver.findElement(this.placeorderE2).click()
 	}
 	async finishOrder () {
@@ -81,7 +90,13 @@ class CartPage extends Page {
 		await this.driver.wait(until.alertIsPresent(), 5000)
 		await this.driver.switchTo().alert().accept()
 	}
+	async waitForElement(selector) {
+        const element = await this.driver.wait(until.elementLocated(By.xpath(selector)), 10000); 
+        await this.driver.wait(until.elementIsVisible(element), 10000); 
+        return element;
+    }
 }
+
 
 module.exports = CartPage
 

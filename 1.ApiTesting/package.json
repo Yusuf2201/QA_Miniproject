@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "mocha main.js --no-timeouts"
+    "test": "mocha employee.js --no-timeouts"
   },
   "dependencies": {
     "ajv": "^8.12.0",

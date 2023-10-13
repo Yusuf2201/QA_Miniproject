@@ -1,4 +1,4 @@
-const employeeSchema = {
+const employeeSchema2 = {
     type: 'object',
     properties: {
       id: { type: 'number' },
@@ -10,4 +10,4 @@ const employeeSchema = {
   };
 
 
-module.exports = employeeSchema
+module.exports = employeeSchema2

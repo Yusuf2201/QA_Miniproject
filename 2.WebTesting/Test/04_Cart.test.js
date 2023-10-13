@@ -16,37 +16,36 @@ describe('Test Cart', function () {
       
 	})
     describe("Test Positif CartPage", () => {
-        it('add something and Check in Cart', async function () {
+        it('Cart_001_emasukkan barang ke dalam keranjang', async function () {
             await homePage.openPage()
-            await driver.sleep(6000)
+            await driver.sleep(5000)
             await homePage.addToCart()
             await cartPage.SuccesAdd()
             await homePage.addToCart2()
             await cartPage.SuccesAdd()
             await driver.sleep(2000)
             await cartPage.toCart()
-            await driver.sleep(2000)
+            await driver.sleep(4000)
             const check = await cartPage.Check()
             expect(check).to.include('Samsung galaxy s6')
             })
-         it('Delete in cart', async function () {
-         
+         it('Cart_002_menghapus barang dari keranjang', async function () {
+            await driver.sleep(2000)
             await cartPage.Delete()
-            await driver.sleep(5000)
+            await driver.sleep(8000)
             const check = await cartPage.Amount()
             expect(check).to.include('360')
             })
-         it('place Order in cart', async function () {
-            await driver.sleep(3000)
+         it('Cart_003_menekan tombol pembelian untuk menuju form pembelian', async function () {
             await cartPage.placeOrder()
-            await driver.sleep(3000)
-            const check = await cartPage.succesPurchase()
+            await driver.sleep(5000)
+            const check = await cartPage.SuccestoPlaceOrder()
             expect(check).to.include('Place order')
             })
         })
 
     describe("Test Negatif Form pembelian", () => {
-        it('mengisi form dengan nama kosong', async function () {
+        it('Cart_004_mengisi form dengan nama kosong', async function () {
             await cartPage.purchaseProcess('', 'Surga','Dunia','123','bulanbulin','2023')
 
             await driver.wait(until.alertIsPresent(), 5000)
@@ -55,7 +54,7 @@ describe('Test Cart', function () {
             await alert.accept()
             expect(actualErrorMessage).to.include('Please fill out Name and Creditcard.');
         })
-        it('mengisi form dengan id card kosong', async function () {
+        it('Cart_005_mengisi form dengan id card kosong', async function () {
             await cartPage.clearData()
             await cartPage.purchaseProcess('josmas', 'Surga','Dunia','','bulanbulin','2023')
             await driver.wait(until.alertIsPresent(), 5000)
@@ -66,10 +65,11 @@ describe('Test Cart', function () {
         })
 	})
     describe("Test positif Form pembelian", () => {
-        it('mengisi form dengan nama kosong', async function () {
+        it('Cart_006_mengisi form dengan nama kosong', async function () {
             await cartPage.clearData()
             await cartPage.purchaseProcess('josmas', 'Surga','Dunia','123','bulanbulin','2023')
-            const check = await cartPage.Check()
+            await driver.sleep(5000)
+            const check = await cartPage.succesPurchase()
             expect(check).to.include('Thank you for your purchase!')
         })
 	})

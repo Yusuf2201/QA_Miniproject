@@ -9,18 +9,23 @@ class RegisPage extends Page {
 	usernameEl = By.css('#sign-username')
 	passwordEl = By.css('#sign-password')
 	submitEl = By.css('#signInModal > div > div > div.modal-footer > button.btn.btn-primary')
-	// errorEl = By.css('div[class="banner banner--error text-start"]')
 	
 	// page action
 	async openPage () {
 		await this.openUrl()
+		await this.driver.sleep(2000)
 		await this.driver.findElement(this.toSignIn).click()
 	}
 
 	async Allert () {
+		
 		return await this.driver.switchTo().alert.getText()
 	}
-	
+	async getNameSignup () {
+		// const a = await this.driver.wait(until.elementLocated(this.toSignIn), 10000);
+		// return await a.getText();
+		return await this.driver.findElement(this.toSignIn).getText()
+	}
 	/**
 	 * fungsi ini digunakan untuk melakukan Registrasi
 	 * @param {string} username
